@@ -13,33 +13,29 @@ int main()
         f = get_float("Change: ");
     } while (f < 0);
 
-    float cents = round(f * 100) / 100;
+    float cents = round(f * 100);
     int count = 0;
-    printf("%f", cents);
+    printf("%.2f\n", cents);
 
-    while (cents < 25)
+    while (25 <= cents)
     {
         count++;
         cents = cents - 25;
-        break;
     }
-    while (cents < 10)
+    while (10 <= cents)
     {
         count++;
         cents = cents - 10;
-        break;
     }
-    while (cents < 5)
+    while (5 <= cents)
     {
         count++;
         cents = cents - 5;
-        break;
     }
-    while (cents < 1)
+    while (1 <= cents)
     {
         count++;
         cents = cents - 1;
-        break;
     }
-    printf("%i\n", count);
+    printf("you have %i coins returned\n", count);
 }
