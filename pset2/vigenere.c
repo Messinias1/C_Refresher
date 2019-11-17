@@ -21,39 +21,40 @@ int main(int argc, string argv[])
             printf("Usage: ./vigenere keyword\n");
             return 1;
         }
+    }
+
+    int key = shift(argv[1][0]);
+    printf("%i\n", key);
+    //             return 0;
+
+    string plaintext = get_string("plaintext: ");
+    printf("ciphertext: ");
+    for (int i = 0; i < strlen(plaintext); i++)
+    {
+        if (islower(plaintext[i]))
+        {
+            printf("%c", (plaintext[i] - 97 + key) % 26 + 97);
+        }
+        else if (isupper(plaintext[i]))
+        {
+            printf("%c", (plaintext[i] - 65 + key) % 26 + 65);
+        }
         else
         {
-            int key = shift(argv[1][0]);
-            printf("%i\n", key);
-            return 0;
+            printf("%c", plaintext[i]);
         }
     }
-    //     // convert ascii values to integer
-    //     int k = atoi(argv[1]);
-
-    //     // get string plain text, check if lowercase or upper while preserving non alpha values(letters)
-    //     string plaintext = get_string("plaintext: ");
-    //     // print ciphertext: plaintext[i] = a = (97 - 97 + 13) = 13 % 26 = 13 + 97 = 110 = n
-    //     printf("ciphertext: ") for (int i = 0; i < strlen(plaintext); i++)
-    //     {
-    //         if (islower(plaintext[i]))
-    //         {
-    //             printf("%c", (plaintext[i] - 97 + k) % 26 + 97);
-    //         }
-    //         else if (isupper(plaintext[i]))
-    //         {
-    //             printf("%c", (plaintext[i] - 65 + k) % 26 + 65);
-    //         }
-    //         else
-    //         {
-    //             printf("%c", plaintext[i]);
-    //         }
-    //     }
-    //     printf("\n");
+    printf("\n");
 }
 
 int shift(char c)
 {
-    c = (c - 'a' + c) % 26 + 'a';
-    return 0;
+    if (islower(c))
+    {
+        return c = c - 97;
+    }
+    else
+    {
+        return c = c - 65;
+    }
 }
