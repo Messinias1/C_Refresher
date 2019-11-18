@@ -4,8 +4,6 @@
 #include <string.h>
 #include <ctype.h>
 
-int shift(char c);
-
 int main(int argc, string argv[])
 {
     // check for 2 total argument count, or exit program
@@ -23,21 +21,23 @@ int main(int argc, string argv[])
         }
     }
 
-    int key = shift(argv[1][0]);
-    printf("%i\n", key);
-    //             return 0;
-
     string plaintext = get_string("plaintext: ");
     printf("ciphertext: ");
-    for (int i = 0; i < strlen(plaintext); i++)
+    for (int i = 0, j = 0; i < strlen(plaintext); i++)
     {
-        if (islower(plaintext[i]))
+        string key = argv[1];
+        //         printf("%i\n", key);
+        if (isalpha(plaintext[i]))
         {
-            printf("%c", (plaintext[i] - 97 + key) % 26 + 97);
-        }
-        else if (isupper(plaintext[i]))
-        {
-            printf("%c", (plaintext[i] - 65 + key) % 26 + 65);
+            if (islower(plaintext[i]))
+            {
+                printf("%c", (plaintext[i] - 97 + tolower(key[j]) - 97) % 26 + 97);
+            }
+            else if (isupper(plaintext[i]))
+            {
+                printf("%c", (plaintext[i] - 65 + toupper(key[j]) - 65) % 26 + 65);
+            }
+            j = (j + 1) % strlen(argv[1]);
         }
         else
         {
@@ -45,16 +45,4 @@ int main(int argc, string argv[])
         }
     }
     printf("\n");
-}
-
-int shift(char c)
-{
-    if (islower(c))
-    {
-        return c = c - 97;
-    }
-    else
-    {
-        return c = c - 65;
-    }
 }
