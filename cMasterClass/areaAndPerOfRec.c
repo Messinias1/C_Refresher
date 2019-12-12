@@ -1,14 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {
-    int numberOfArguments = argc;
-    char *argument1 = argv[0];
-    char *argument2 = argv[1];
+    double height = atoi(argv[1]);
+    double width = atoi(argv[2]);
+    double perimeter = 2 * (height + width);
+    double area = width * height;
 
-    printf("Number of Arguments: %d", numberOfArguments);
-    printf("Argument 1 is the program name: %s", argumemt1);
-    printf("Argument 2 is the command line argument: %s", argument2);
-
-    return 0;
-}
+    printf("height: %.2f\n", height);
+    printf("width: %.2f\n", width);
+    printf("perimeter: %.2f\n", perimeter);
+    printf("area: %.2f\n", area);
