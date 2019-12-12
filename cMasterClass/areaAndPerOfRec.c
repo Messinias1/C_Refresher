@@ -3,8 +3,8 @@
 
 int main(int argc, char *argv[])
 {
-    double height = atoi(argv[1]);
-    double width = atoi(argv[2]);
+    double height = 4;
+    double width = 2;
     double perimeter = 2 * (height + width);
     double area = width * height;
 
@@ -12,3 +12,4 @@ int main(int argc, char *argv[])
     printf("width: %.2f\n", width);
     printf("perimeter: %.2f\n", perimeter);
     printf("area: %.2f\n", area);
+}
